@@ -7,11 +7,11 @@ import io
 import sys 
 
 
-def _upload():
+def upload():
 
-    _upload_widget = fileupload.FileUploadWidget()
+    upload_widget = fileupload.FileUploadWidget()
 
-    def _cb(change):
+    def cb(change):
         global file_contents
         decoded = io.StringIO(change['owner'].data.decode('utf-8'))
         filename = change['owner'].filename
@@ -19,10 +19,10 @@ def _upload():
             filename, len(decoded.read()) / 2 **10))
         file_contents = decoded.getvalue()
 
-    _upload_widget.observe(_cb, names='data')
-    display(_upload_widget)
+    upload_widget.observe(cb, names='data')
+    display(upload_widget)
 
-_upload()
+upload()
 
 
 # you need to upload .txt file here for convert that in image
